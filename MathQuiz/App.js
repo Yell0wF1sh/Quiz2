@@ -1,73 +1,52 @@
 
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput,Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
-  const [x, setX] = useState(Math.floor(Math.random()*13))
-  const [y, setY] = useState(Math.floor(Math.random()*13))
-  const [userAnswer, setUserAnswer] = useState(0)
-  const [correct, setCorrect] = useState(0)
-  const [answered, setAnswered] = useState(0)
-  const [isCorrect, setIsCorrect] = useState(null)
+  const [radius, setRadius] = useState(null)
+  const [height, setHeight] = useState(null)
+  const [areaOfBase, setAreaOfBase] = useState(null)
+  const [isCalView, setIsCalView] = useState(false)
 
   const storeData = async (value) => {
 
   }
 
-  const checkAnswerAreaDefault =
-  (
-    <View style={{justifyContent: 'center', alignItems: 'flex-start'}}>
-      <Button
-        color='red'
-        title='CHECK ANSWER'
-      />
-    </View>
-  );
-
-  const checkAnswerAreaCorrect = 
-  (
-    <View style={{justifyContent: 'center', alignItems: 'flex-start'}}>
-      <Text style={{color:'red', fontWeight: 600}}>
-        CORRECT!!
-      </Text>
-      <Button
-        color='green'
-        title='Next Question'
-      />
-    </View>
-  );
-
-const checkAnswerAreaWrong = 
-  (
-    <View style={{justifyContent: 'center', alignItems: 'flex-start'}}>
-      <Text style={{color:'red', fontWeight: 600}}>
-        Sorry, answer was {x*y}, try again!
-      </Text>
-      <Button
-        color='green'
-        title='Next Question'
-      />
-    </View>
-  );
+  
 
   return (
     <View>
-      <Text style={{fontSize: 32, color: 'blue', fontWeight: 600}}>
-        Math quiz for numbers between 0 and 12
-      </Text>
+      <View style={{backgroundColor: 'lightgreen'}}>
+        <Text>Quiz 3</Text>
+        <Text>CS153a Fall21</Text>
+        <Text>Write thecode for this App, includng this text!</Text>
+      </View>
       <Text>
-        Calculate the product of the following two numbers:
+        Enter the radius and the height of a cylinder in inches and we will 
+        calculate the volume in gallons. A 6 inch radius and 12 inch 
+        height will have volume 5.88. Divide cubic inches by 231 to get 
+        gallons, and show only 2 digits after the decimal point in the 
+        volume
       </Text>
-      <View style={{flexDirection: 'row'}}>
-        <Text>
-          {x} * {y} = 
-        </Text>
+      <View>
+        <Text>radius</Text>
         <TextInput 
-          placeholder='???'
+          placeholder='radius'
+          onChangeText={(text) => {setRadius(text)}}
         />
       </View>
-      {isCorrect?checkAnswerAreaCorrect:checkAnswerAreaDefault}
+      <View>
+        <Text>height</Text>
+        <TextInput 
+          placeholder='height'
+          onChangeText={(text) => {setHeight(text)}}
+        />
+      </View>
+      <Button 
+        title='CALCULATE VOLUME'
+        onPress={() => {}}
+      />
     </View>
   );
 }
